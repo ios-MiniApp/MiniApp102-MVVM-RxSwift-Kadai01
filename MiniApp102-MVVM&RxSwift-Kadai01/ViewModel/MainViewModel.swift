@@ -19,13 +19,13 @@ protocol ViewModelInputs {
 }
 
 protocol ViewModelOutputs {
-    var resultPublishSubject: PublishSubject <String> { get }
+    var resultPublishRelay: PublishRelay<String> { get }
 }
 
 class ViewModel: ViewModelInputs, ViewModelOutputs {
 
     // MARK: - Outputs
-    var resultPublishSubject = PublishSubject<String>()
+    var resultPublishRelay = PublishRelay<String>()
 
     // MARK: - Inputs
     var textField01Observable: Observable <String>
@@ -35,12 +35,14 @@ class ViewModel: ViewModelInputs, ViewModelOutputs {
     var textField05Observable: Observable <String>
     var calculationButtonObservable: Observable <Void>
 
+    let calculate = Calculate()
+
     // MARK: - property
-    private var number1 = ""
-    private var number2 = ""
-    private var number3 = ""
-    private var number4 = ""
-    private var number5 = ""
+    private var number1 = 0
+    private var number2 = 0
+    private var number3 = 0
+    private var number4 = 0
+    private var number5 = 0
 
     private let disposeBag = DisposeBag()
 
@@ -60,9 +62,34 @@ class ViewModel: ViewModelInputs, ViewModelOutputs {
     }
 
     private func setupBindings() {
+
+        Observable.combineLatest(
+            textField01Observable,
+            textField02Observable,
+            textField03Observable,
+            textField04Observable,
+            textField05Observable
+        ).subscribe { number1, number2, number3, number4, number5 in
+            self.number1 = Int(number1) ?? 0
+            self.number2 = Int(number2) ?? 0
+            self.number3 = Int(number3) ?? 0
+            self.number4 = Int(number4) ?? 0
+            self.number5 = Int(number5) ?? 0
+        }.disposed(by: disposeBag)
+
         calculationButtonObservable.asObservable()
             .subscribe(onNext: { [weak self] in
-                print("tap")
+
+                self?.calculate.addFiveNumbers(
+                    number1: self?.number1 ?? 0,
+                    number2: self?.number2 ?? 0,
+                    number3: self?.number3 ?? 0,
+                    number4: self?.number4 ?? 0,
+                    number5: self?.number5 ?? 0
+                )
+
+                self?.resultPublishRelay.accept(String(self?.calculate.sum ?? 0))
+
             })
             .disposed(by: disposeBag)
     }

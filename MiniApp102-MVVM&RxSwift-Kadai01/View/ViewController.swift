@@ -23,11 +23,11 @@ class ViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private lazy var viewMoldel = ViewModel(
-        textField01Observable: textField01.rx.text.map{$0 ?? "0"}.asObservable(),
-        textField02Observable: textField02.rx.text.map{$0 ?? "0"}.asObservable(),
-        textField03Observable: textField03.rx.text.map{$0 ?? "0"}.asObservable(),
-        textField04Observable: textField04.rx.text.map{$0 ?? "0"}.asObservable(),
-        textField05Observable: textField05.rx.text.map{$0 ?? "0"}.asObservable(),
+        textField01Observable: textField01.rx.text.orEmpty.asObservable(),
+        textField02Observable: textField02.rx.text.orEmpty.asObservable(),
+        textField03Observable: textField03.rx.text.orEmpty.asObservable(),
+        textField04Observable: textField04.rx.text.orEmpty.asObservable(),
+        textField05Observable: textField05.rx.text.orEmpty.asObservable(),
         calculationButtonObservable: calculationButton.rx.tap.asObservable()
      )
 
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
 
     private func setupBindings() {
-        viewMoldel.resultPublishSubject.bind(to: resultLabel.rx.text).disposed(by: disposeBag)
+        viewMoldel.resultPublishRelay.bind(to: resultLabel.rx.text).disposed(by: disposeBag)
     }
 }
 

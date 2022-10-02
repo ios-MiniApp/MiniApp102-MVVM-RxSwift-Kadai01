@@ -11,6 +11,7 @@
 		871F171328E68C1300D0036F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 871F171228E68C1300D0036F /* RxCocoa */; };
 		871F171528E68C1300D0036F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 871F171428E68C1300D0036F /* RxRelay */; };
 		871F171728E68C1300D0036F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 871F171628E68C1300D0036F /* RxSwift */; };
+		87B41AC528E91211009F1046 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B41AC428E91211009F1046 /* Calculate.swift */; };
 		87BA599228E67F9200091084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA599128E67F9200091084 /* AppDelegate.swift */; };
 		87BA599428E67F9200091084 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA599328E67F9200091084 /* SceneDelegate.swift */; };
 		87BA599628E67F9200091084 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA599528E67F9200091084 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		871F170F28E685AF00D0036F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		87B41AC428E91211009F1046 /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		87BA598E28E67F9200091084 /* MiniApp102-MVVM&RxSwift-Kadai01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MiniApp102-MVVM&RxSwift-Kadai01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BA599128E67F9200091084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87BA599328E67F9200091084 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		87BA59AC28E67FE300091084 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87B41AC428E91211009F1046 /* Calculate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				87BA599628E67F9200091084 /* ViewController.swift in Sources */,
 				87BA599228E67F9200091084 /* AppDelegate.swift in Sources */,
 				87BA599428E67F9200091084 /* SceneDelegate.swift in Sources */,
+				87B41AC528E91211009F1046 /* Calculate.swift in Sources */,
 				871F171028E685AF00D0036F /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
